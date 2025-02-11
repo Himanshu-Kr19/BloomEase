@@ -1,0 +1,79 @@
+create database nog;
+
+Use nog;
+
+CREATE TABLE menstrual_cycle_data (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cycle_length INT NOT NULL,
+    start_date DATE NOT NULL,
+    cycle_date DATE NOT NULL
+);
+
+CREATE TABLE custom_reminders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    reminder_text VARCHAR(255) NOT NULL
+);
+
+select * from menstrual_cycle_data;
+
+CREATE TABLE Doctors (
+    Dr_name VARCHAR(255),
+    Phone VARCHAR(20)
+);
+
+INSERT INTO Doctors (Dr_name, Phone) 
+VALUES 
+    ('Dr. Sujatha', '76048 42542'),
+    ('Dr. Shreyaa Sriram', '98765 43210'),
+    ('Dr. Agila', '99405 80400'),
+    ('Dr. Chinthu Madeswaran', '99427 53829'),
+    ('Dr. Yogashalini', '98840 41677');
+
+INSERT INTO Doctors (Dr_name, Phone) 
+VALUES 
+    ('Dr. Jhanjal', '88840 41677');
+    
+select * from Doctors;
+
+
+CREATE TABLE PeriodsProblems (
+    Problems VARCHAR(100),
+    Remedy TEXT
+);
+
+
+INSERT INTO PeriodsProblems (Problems, Remedy) VALUES
+    ('Menstrual Cramps', 'Remedy for Menstrual Cramps: Rest, apply a heating pad, take over-the-counter pain relievers.'),
+    ('Irregular Periods', 'Remedy for Irregular Periods: Maintain a healthy lifestyle, manage stress.'),
+    ('Heavy Bleeding', 'Remedy for Heavy Bleeding: Use proper hygiene products, iron-rich diet, consult a doctor.'),
+    ('Mood Swings', 'Remedy for Mood Swings: Practice relaxation techniques, regular exercise, talk to a counselor.'),
+    ('Fatigue', 'Remedy for Fatigue: Get enough sleep, stay hydrated, eat balanced meals, light exercise.'),
+    ('Bloating', 'Remedy for Bloating: Stay hydrated, avoid salty foods, exercise, herbal teas.'),
+    ('Headache', 'Remedy for Headache: Rest in a quiet, dark room, stay hydrated, use pain relievers.'),
+    ('Acne', 'Remedy for Acne: Maintain a good skincare routine, avoid excessive oily foods.'),
+    ('Back Pain', 'Remedy for Back Pain: Apply heat or cold packs, gentle stretching, maintain good posture.'),
+    ('Nausea', 'Remedy for Nausea: Ginger tea, peppermint, avoid greasy or spicy foods.');
+
+select * from PeriodsProblems ;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(30) BINARY UNIQUE,
+    phone VARCHAR(10) UNIQUE,
+    password VARCHAR(255) BINARY,
+    CONSTRAINT username_format CHECK (username REGEXP '^[a-zA-Z0-9]+$'),
+    CONSTRAINT password_format CHECK (password REGEXP '^[a-zA-Z0-9]+$')
+);
+
+drop table users;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin UNIQUE,
+    phone VARCHAR(10) UNIQUE,
+    password VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+    CONSTRAINT username_format CHECK (username REGEXP '^[a-zA-Z0-9]+$'),
+    CONSTRAINT password_format CHECK (password REGEXP '^[a-zA-Z0-9]+$')
+);
+
+select * from users;
